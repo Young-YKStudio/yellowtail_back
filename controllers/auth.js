@@ -81,7 +81,9 @@ exports.forgotPassword = async (req, res, next) => {
   const { email } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email: email});
+
+    console.log(user)
 
     if (!user) {
       return next(new ErrorResponse('No email was found', 404))
